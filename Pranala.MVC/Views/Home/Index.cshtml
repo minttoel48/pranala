@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Pranala</h1>
+    <p class="lead">&nbsp;</p>
+    <input type="number" id="angka" class=" form-control" />
+    <p class="lead">&nbsp;</p>
+    <div class="row">
+        <button type="button" onClick="return GenerateSegitiga();" class="btn btn-primary btn-lg">Segitiga</button>
+        <button type="button" onClick="return GenerateGanjil();" class="btn btn-danger btn-lg">Ganjil</button>
+        <button type="button" onClick="return GeneratePrima();" class="btn btn-success btn-lg">Prima</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Result</h2>
+        <div id="result">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function GenerateSegitiga() {
+        var angka = $('#angka').val();
+        $.ajax({
+            type: "POST",
+            url: "../Home/GenerateSegitiga",
+            data: { angka: angka},
+            datatype: "json",
+            success: function (retDat) {
+                console.log(retDat);
+                $('#result').html('');
+                if (retDat.Status) {
+                    var text = "";
+
+                    for (var i = 0; i < retDat.Data.length; i++) {
+                        text = text + '<p>' + retDat.Data[i] + '</p>';                        
+                    }
+                    console.log(text);
+                    $('#result').html(text);
+                }
+                else {
+
+                }
+            }
+        });
+    }
+
+    function GenerateGanjil() {
+        var angka = $('#angka').val();
+        $.ajax({
+            type: "POST",
+            url: "../Home/GenerateGanjil",
+            data: { angka: angka },
+            datatype: "json",
+            success: function (retDat) {
+                console.log(retDat);
+                $('#result').html('');
+                if (retDat.Status) {
+                    var text = "";
+
+                    for (var i = 0; i < retDat.Data.length; i++) {
+                        text = text + '<p>' + retDat.Data[i] + '</p>';
+                    }
+                    console.log(text);
+                    $('#result').html(text);
+                }
+                else {
+
+                }
+            }
+        });
+    }
+
+    function GeneratePrima() {
+        var angka = $('#angka').val();
+        $.ajax({
+            type: "POST",
+            url: "../Home/GeneratePrima",
+            data: { angka: angka },
+            datatype: "json",
+            success: function (retDat) {
+                console.log(retDat);
+                $('#result').html('');
+                if (retDat.Status) {
+                    var text = "";
+
+                    for (var i = 0; i < retDat.Data.length; i++) {
+                        text = text + '<p>' + retDat.Data[i] + '</p>';
+                    }
+                    console.log(text);
+                    $('#result').html(text);
+                }
+                else {
+
+                }
+            }
+        });
+    }
+</script>
