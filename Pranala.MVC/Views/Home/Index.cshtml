@@ -26,79 +26,94 @@
 <script>
     function GenerateSegitiga() {
         var angka = $('#angka').val();
-        $.ajax({
-            type: "POST",
-            url: "../Home/GenerateSegitiga",
-            data: { angka: angka},
-            datatype: "json",
-            success: function (retDat) {
-                console.log(retDat);
-                $('#result').html('');
-                if (retDat.Status) {
-                    var text = "";
+        if (angka == '') {
+            $('#result').html("Silahkan masukan angka!");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "../Home/GenerateSegitiga",
+                data: { angka: angka },
+                datatype: "json",
+                success: function (retDat) {
+                    console.log(retDat);
+                    $('#result').html('');
+                    if (retDat.Status) {
+                        var text = "";
 
-                    for (var i = 0; i < retDat.Data.length; i++) {
-                        text = text + '<p>' + retDat.Data[i] + '</p>';                        
+                        for (var i = 0; i < retDat.Data.length; i++) {
+                            text = text + '<p>' + retDat.Data[i] + '</p>';
+                        }
+                        console.log(text);
+                        $('#result').html(text);
                     }
-                    console.log(text);
-                    $('#result').html(text);
+                    else {
+                        $('#result').html(retDat.Message);
+                    }
                 }
-                else {
-
-                }
-            }
-        });
+            });
+        }
     }
 
     function GenerateGanjil() {
         var angka = $('#angka').val();
-        $.ajax({
-            type: "POST",
-            url: "../Home/GenerateGanjil",
-            data: { angka: angka },
-            datatype: "json",
-            success: function (retDat) {
-                console.log(retDat);
-                $('#result').html('');
-                if (retDat.Status) {
-                    var text = "";
+        if (angka == '') {
+            $('#result').html("Silahkan masukan angka!");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "../Home/GenerateGanjil",
+                data: { angka: angka },
+                datatype: "json",
+                success: function (retDat) {
+                    console.log(retDat);
+                    $('#result').html('');
+                    if (retDat.Status) {
+                        var text = "";
 
-                    for (var i = 0; i < retDat.Data.length; i++) {
-                        text = text + '<p>' + retDat.Data[i] + '</p>';
+                        for (var i = 0; i < retDat.Data.length; i++) {
+                            text = text + '<p>' + retDat.Data[i] + '</p>';
+                        }
+                        console.log(text);
+                        $('#result').html(text);
                     }
-                    console.log(text);
-                    $('#result').html(text);
+                    else {
+                        $('#result').html(retDat.Message);
+                    }
                 }
-                else {
-
-                }
-            }
-        });
+            });
+        }
     }
 
     function GeneratePrima() {
         var angka = $('#angka').val();
-        $.ajax({
-            type: "POST",
-            url: "../Home/GeneratePrima",
-            data: { angka: angka },
-            datatype: "json",
-            success: function (retDat) {
-                console.log(retDat);
-                $('#result').html('');
-                if (retDat.Status) {
-                    var text = "";
+        if (angka == '') {
+            $('#result').html("Silahkan masukan angka!");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "../Home/GeneratePrima",
+                data: { angka: angka },
+                datatype: "json",
+                success: function (retDat) {
+                    console.log(retDat);
+                    $('#result').html('');
+                    if (retDat.Status) {
+                        var text = "";
 
-                    for (var i = 0; i < retDat.Data.length; i++) {
-                        text = text + '<p>' + retDat.Data[i] + '</p>';
+                        for (var i = 0; i < retDat.Data.length; i++) {
+                            text = text + '<p>' + retDat.Data[i] + '</p>';
+                        }
+                        console.log(text);
+                        $('#result').html(text);
                     }
-                    console.log(text);
-                    $('#result').html(text);
+                    else {
+                        $('#result').html(retDat.Message);
+                    }
                 }
-                else {
-
-                }
-            }
-        });
+            });
+        }
     }
 </script>
